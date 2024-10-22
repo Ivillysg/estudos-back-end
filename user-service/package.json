@@ -1,0 +1,28 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch --env-file .env src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/bcrypt": "5.0.2",
+    "@types/node": "^22.7.4",
+    "@types/pg": "8.11.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@fastify/jwt": "9.0.1",
+    "bcrypt": "5.1.1",
+    "db-migrate": "0.11.14",
+    "db-migrate-pg": "1.5.2",
+    "fastify": "^5.0.0",
+    "fastify-plugin": "5.0.1",
+    "pg": "8.13.0"
+  }
+}
