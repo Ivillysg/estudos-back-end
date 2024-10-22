@@ -1,7 +1,6 @@
 # Aplicação de estudos
-###### A aplicação tem como propósito otimizar o sistema de autenticação e manipulação de transações bancárias dos usuários. A ideia é utilizar tecnologias que garantam performance, como o Redis para leitura rápida de dados do usuário e RabbitMQ para comunicação entre serviços, garantindo **escalabilidade** e modularidade.
+ A aplicação tem como propósito otimizar o sistema de autenticação e manipulação de transações bancárias dos usuários. A ideia é utilizar tecnologias que garantam performance, como o Redis para leitura rápida de dados do usuário e RabbitMQ para comunicação entre serviços, garantindo escalabilidade e modularidade.
 
-### Todo 
 #### Serviço Usuário:
 - [X] Criar um fluxo de cadastro e autenticação completo no Fastify utilizando SQL sem ORM implementando migrations no banco.
 - [ ] Criar uma entidade Profile que consiste em armazenar os dados do usuário nesse sistema de autenticação utilizando o JSONB(banco NoSQL do Postgres)
