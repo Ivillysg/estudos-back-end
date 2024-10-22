@@ -3,7 +3,9 @@
 
 ### Todo 
 #### Serviço Usuário:
-
+- [X] Criar um fluxo de cadastro e autenticação completo no Fastify utilizando SQL sem ORM implementando migrations no banco.
+- [ ] Criar uma entidade Profile que consiste em armazenar os dados do usuário nesse sistema de autenticação utilizando o JSONB(banco NoSQL do Postgres)
+- [ ] Quando o usuário estiver logado armazenar as informações dele no Redis pra ter uma leitura mais rápida
   
 #### Serviço transações bancárias:
 - [ ] Criar um serviço utilizando o Express que armazenará transações bancárias
@@ -11,10 +13,4 @@
 - [ ] Deixar as duas aplicações em containers docker
 - [ ] Realizar a comunicação entre os dois serviços utilizando o RabbitMQ
 
-### In Progress
-- [ ] Criar uma entidade Profile que consiste em armazenar os dados do usuário nesse sistema de autenticação utilizando o JSONB(banco NoSQL do Postgres)
-- [ ] Quando o usuário estiver logado armazenar as informações dele no Redis pra ter uma leitura mais rápida
-
-### Done ✓
-- [X] Criar um fluxo de cadastro e autenticação completo no Fastify utilizando SQL sem ORM implementando migrations no banco.
 
