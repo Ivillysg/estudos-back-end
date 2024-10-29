@@ -1,6 +1,7 @@
-import { db } from "@/database";
+import { ProfileEntity } from "@/entities/profile";
+import { UserEntity } from "@/entities/user";
+import { ProfilesRepository } from "@/repositories/profile-repository";
 import { hash } from "bcrypt";
-import { randomUUID } from "crypto";
 
 type CreateUserProfileRequest = {
   userId: string;
@@ -11,22 +12,25 @@ type CreateUserProfileRequest = {
 
 type CreateUserProfileResponse = Partial<CreateUserProfileRequest>;
 
-export async function createUserProfile(
-  data: CreateUserProfileRequest
-): Promise<CreateUserProfileResponse> {
-  const { userId, name, age, githubUsername } = data;
+export class CreateUserProfileService {
+  constructor(private profilesRepository: ProfilesRepository) {}
 
-  const query = `
-  INSERT INTO profiles (user_id, profile_data)
-  VALUES ($1, $2)
-  RETURNING *`;
+  async execute(data: ProfileEntity) {
+    const { userId, profileData } = data;
+    //Check if exists user profile
+    const userProfile = await this.profilesRepository.findByUserId(userId);
 
-  const values = [userId, JSON.stringify({ name, age, githubUsername })];
+    if (userProfile) {
+      throw new Error("User profile exists");
+    }
 
-  try {
-    const result = await db.query(query, values);
-    return result.rows[0];
-  } catch (error) {
-    throw error;
+    const result = await this.profilesRepository.create({
+      userId,
+      profileData,
+    });
+
+    return {
+      result,
+    };
   }
 }
