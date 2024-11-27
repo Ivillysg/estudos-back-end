@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  transaction-service:
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+    environment:
+      - RABBITMQ_URL=amqp://transaction-rabbitmq
+      - MONGODB_URI=mongodb://transaction-mongodb:27017/transactions
+    depends_on:
+      - transaction-rabbitmq
+      - transaction-mongodb
+    networks:
+      - transaction-network
+
+  transaction-rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5674:5672"
+      - "15674:15672"
+    networks:
+      - transaction-network
+
+  transaction-mongodb:
+    image: mongo
+    ports:
+      - "27018:27017"
+    networks:
+      - transaction-network
+
+networks:
+  transaction-network:
+    driver: bridge
